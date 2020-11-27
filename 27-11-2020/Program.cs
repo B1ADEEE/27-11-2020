@@ -21,6 +21,8 @@ namespace _27_11_2020
             Display(playlist);
             playlist.Sort();
             Display(playlist);
+            Shuffle(playlist);
+            Display(playlist);
 
         }
         private static void Display(List<Song> playlist)
@@ -29,6 +31,19 @@ namespace _27_11_2020
             foreach (Song song in playlist)
             {
                 Console.WriteLine($"{song.Artist, -25}{song.Title, -20}{song.Duration, -20}{song.SongGenre, -20}");
+            }
+        }
+        private static void Shuffle(List<Song> playlist)
+        {
+            Random rng = new Random();
+            int numberOfSongs = playlist.Count;
+            while(numberOfSongs > 1)
+            {
+                numberOfSongs--;
+                int randomNumber = rng.Next(numberOfSongs+1);
+                Song song = playlist[randomNumber];
+                playlist[randomNumber] = playlist[numberOfSongs];
+                playlist[numberOfSongs] = song;
             }
         }
     }
