@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _27_11_2020
 {
-    class Song
+    public class Song:IComparable
     {
         public string Title { get; set; }
         public string Artist { get; set; }
@@ -28,6 +28,17 @@ namespace _27_11_2020
         public override string ToString()
         {
             return string.Format($"{Artist}{Title}{Duration}{SongGenre}");
+        }
+
+        public int CompareTo(object other)
+        {
+            Song that = (Song)other;
+            int returnValue = this.Artist.CompareTo(that.Artist);
+            if (returnValue == 0)
+            {
+                returnValue = this.Title.CompareTo(that.Title);
+            }
+            return returnValue;
         }
     }
     public enum Genre {  Rock, Pop, Dance, Other}
