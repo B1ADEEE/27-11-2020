@@ -18,9 +18,15 @@ namespace _27_11_2020
             playlist.Add(s3);
             playlist.Add(s4);
             playlist.Add(s5);
+            Display(playlist);
+
+        }
+        private static void Display(List<Song> playlist)
+        {
+            Console.WriteLine("{0}{1,24}{2,23}{3,23}", "Artist:", "Title:", "Duration:", "Music Genre:");
             foreach (Song song in playlist)
             {
-                Console.WriteLine(song);
+                Console.WriteLine($"{song.Artist, -25}{song.Title, -20}{song.Duration, -20}{song.SongGenre, -20}");
             }
         }
     }
